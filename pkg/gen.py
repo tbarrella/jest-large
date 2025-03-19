@@ -10,7 +10,7 @@ def main():
     args = parser.parse_args()
 
     with open(f"{args.out}/index.test.js", "w") as f:
-        f.write(f"""
+        f.write(f"""\
 const {{ s }} = require("./{N - 1:x}/{N - 1:x}/{N - 1:x}/{N - 1:x}");
 
 describe("sum", () => {{
