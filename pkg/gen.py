@@ -42,7 +42,8 @@ describe("sum", () => {{
         ])
 
         subdir = f"{args.out}/{a:x}/{b:x}/{c:x}"
-        os.makedirs(subdir, exist_ok=True)
+        if not d:
+            os.makedirs(subdir)
         with open (f"{subdir}/{d:x}.js", "w") as f:
             f.write(js)
         
