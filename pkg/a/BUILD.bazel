@@ -1,12 +1,35 @@
+load("@aspect_bazel_lib//lib:run_binary.bzl", "run_binary")
+load("@aspect_bazel_lib//lib:write_source_files.bzl", "write_source_files")
 load("@aspect_rules_jest//jest:defs.bzl", "jest_test")
 load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@rules_python//python:defs.bzl", "py_binary")
 
 npm_link_all_packages()
 
 jest_test(
     name = "test",
     data = [
+        "index.test.js",
         ":node_modules",
-    ],
+    ] + glob(["src/**"]),
     node_modules = ":node_modules",
+)
+
+py_binary(
+    name = "gen",
+    srcs = ["gen.py"],
+)
+
+run_binary(
+    name = "run_gen",
+    args = ["$(@D)"],
+    out_dirs = ["generated"],
+    tool = ":gen",
+)
+
+write_source_files(
+    name = "write_gen",
+    files = {
+        "src": ":run_gen",
+    },
 )
