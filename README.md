@@ -1,15 +1,10 @@
 ## Repro
 
-### Setup
-
-```
-bazel run //pkg/a:write_gen
-```
-
 ### Jest without Bazel
 
 ```
-cd pkg/a
+bazel run //pkg:write_gen
+cd pkg
 bazel run -- @pnpm --dir $PWD i
 time pnpm test
 
@@ -23,5 +18,5 @@ time pnpm test -- --no-cache
 ### Jest with Bazel
 
 ```
-bazel test --cache_test_results=no --test_output=streamed //pkg/a:test
+bazel test --cache_test_results=no --test_output=streamed //pkg:test
 ```

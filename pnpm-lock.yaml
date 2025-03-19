@@ -6,9 +6,7 @@ settings:
 
 importers:
 
-  .: {}
-
-  pkg/a:
+  pkg:
     devDependencies:
       jest:
         specifier: 29.7.0
