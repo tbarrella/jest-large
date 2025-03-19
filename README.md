@@ -9,7 +9,7 @@ bazel run -- @pnpm --dir $PWD test
 ## Jest fails with Bazel
 
 ```
-bazel test //pkg/a:test
+bazel test --test_output=streamed //pkg/a:test
 ```
 
 ### Workaround
