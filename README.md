@@ -1,9 +1,14 @@
 ## Repro
 
-### Jest without Bazel
+### Setup
 
 ```
 bazel run //pkg:write_gen
+```
+
+### Jest without Bazel
+
+```
 cd pkg
 bazel run -- @pnpm --dir $PWD i
 time pnpm test

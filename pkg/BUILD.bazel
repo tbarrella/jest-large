@@ -9,10 +9,7 @@ npm_link_all_packages()
 jest_test(
     name = "test",
     size = "medium",
-    data = [
-        ":node_modules",
-        ":run_gen",
-    ],
+    data = [":node_modules"] + glob(["src/**"]),
     node_modules = ":node_modules",
 )
 
